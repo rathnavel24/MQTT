@@ -4,6 +4,8 @@ import datetime
 import time
 import os
 
+from insert_services import insert_data
+
 cur_time = int(datetime.datetime.now().timestamp())
 
 broker = 'cbe.themaestro.in'
@@ -40,8 +42,10 @@ def subscribe(client: mqtt_client):
         print(msg.topic)
         print("RECEIVED MQTT DATA") #msg.payload,
         try:
-            data=msg.payload.decode()
-            print(data)
+            #data=msg.payload.decode()
+            payload = json.loads(msg.payload.decode())
+            insert_data(payload)
+            print(payload)
         except:
             data = ""
             print(f"Received data error {cur_time}")

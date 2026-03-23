@@ -1,8 +1,8 @@
-"""fix varchar length
+"""changed db
 
-Revision ID: 03cbe15f041b
-Revises: 
-Create Date: 2026-03-23 22:10:10.050893
+Revision ID: 0e2eda2d4e84
+Revises: 96c13cdd611d
+Create Date: 2026-03-23 23:00:35.888034
 
 """
 from typing import Sequence, Union
@@ -12,8 +12,8 @@ import sqlalchemy as sa
 
 
 # revision identifiers, used by Alembic.
-revision: str = '03cbe15f041b'
-down_revision: Union[str, Sequence[str], None] = None
+revision: str = '0e2eda2d4e84'
+down_revision: Union[str, Sequence[str], None] = '96c13cdd611d'
 branch_labels: Union[str, Sequence[str], None] = None
 depends_on: Union[str, Sequence[str], None] = None
 
