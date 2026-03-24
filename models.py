@@ -1,36 +1,18 @@
-from sqlalchemy import Column, BigInteger, String, Integer, Float, TIMESTAMP, func
+from sqlalchemy import Column, BigInteger, String, Integer, Float, TIMESTAMP, func,TEXT
 from sqlalchemy.orm import declarative_base
 from db import Base
+from sqlalchemy.dialects.postgresql import JSONB
 
 
+class DeviceRawData(Base):
+    __tablename__ = "device_raw_data"
 
-class SystemMetrics(Base):
-    __tablename__ = "system_metrics"
-
-    created_at = Column(TIMESTAMP(timezone=True), server_default=func.now(), primary_key=True)
-
-    hostname = Column(String, primary_key=True)
-
-    cpu_usage = Column(Integer)
-    cpu_status = Column(Integer)
-    cpu_thershold=Column(Integer)
-
-    ram_usage = Column(Integer)
-    ram_free = Column(Float)
-    ram_status = Column(Integer)
-    ram_thershold = Column(Integer)
-
-    disk_usage = Column(Integer)
-    disk_free = Column(Float)
-    disk_status = Column(Integer)
-    disk_thershold = Column(Integer)
-
-
-class ServiceStatus(Base):
-    __tablename__ = "service_status"
-
-    created_at = Column(TIMESTAMP(timezone=True), server_default=func.now(), primary_key=True)
-
-    hostname = Column(String, primary_key=True)
-    service_name = Column(String, primary_key=True)
-    status = Column(Integer)
+    created_at = Column(TIMESTAMP,server_default=func.now(),primary_key=True)
+    signature_id = Column(String(255),primary_key=True)
+    timestamp = Column(Integer)
+    device_address = Column(String(50))
+    request_type = Column(Integer)
+    is_location = Column(Integer)
+    latitude = Column(TEXT)
+    longitude = Column(TEXT)
+    peripherals = Column(JSONB)

@@ -11,7 +11,7 @@ cur_time = int(datetime.datetime.now().timestamp())
 broker = 'cbe.themaestro.in'
 port = 1884
 
-topic = "server/monitor" # Replace with the topic you want to subscribe to
+topic = "test/data" # Replace with the topic you want to subscribe to
 
 client_id = f"mconnect{cur_time}"
 
